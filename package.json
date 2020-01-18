@@ -1,0 +1,27 @@
+{
+  "name": "logbot",
+  "version": "1.0.0",
+  "description": "A Furry Discord Bot made in JavaScript",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RackyBoi/LogBot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "RackyBoi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RackyBoi/LogBot/issues"
+  },
+  "homepage": "https://github.com/RackyBoi/LogBot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0"
+  }
+}

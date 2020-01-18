@@ -1,2 +1,2 @@
 # LogBot
-A JavaScript Furry Discord Bot
+"A Furry Discord Bot made in JavaScript",
