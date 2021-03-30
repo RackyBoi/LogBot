@@ -26,11 +26,14 @@ bot.on('message', msg => {
     const command = args.shift().toLowerCase().substring(1);
     
     try {
-        console.info(`Called command: ${command}`);
+        if (!bot.commands.has(command)) {
+            msg.reply('Esse comando não existe')
+            return
+        }
+        console.info(`${msg.author.username} Called command: ${command} ${args} at ${msg.channel.name}`);
         bot.commands.get(command).execute(msg, args);
     } catch (error) {
-        console.error(error);
-        msg.channel.send('Ops, eu escorreguei em alguns bits!');
+        msg.channel.send('Ops, eu tropecei em alguns fios!');
         return
     }
 });

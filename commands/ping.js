@@ -2,6 +2,7 @@ module.exports = {
 	name: 'ping',
 	description: 'Ping!',
 	execute(msg, args) {
-		msg.reply('pong');
+		latency = parseInt(msg.createdTimestamp - Date.now())
+		msg.channel.send(`Pong ! ${latency} ms`);
 	},
 };
