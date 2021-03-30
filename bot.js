@@ -6,6 +6,7 @@ bot.commands = new Discord.Collection();
 const botCommands = require('./commands');
 
 const TOKEN = process.env.TOKEN;
+const PREFIX = process.env.PREFIX;
 
 Object.keys(botCommands).map(key => {
     bot.commands.set(botCommands[key].name, botCommands[key]);
@@ -19,9 +20,10 @@ bot.on('ready', () => {
 
 bot.on('message', msg => {
     if(msg.author.bot) return
+    if(!msg.content.startsWith(PREFIX)) return
 
     const args = msg.content.split(/ +/);
-    const command = args.shift().toLowerCase();
+    const command = args.shift().toLowerCase().substring(1);
     
     try {
         console.info(`Called command: ${command}`);
