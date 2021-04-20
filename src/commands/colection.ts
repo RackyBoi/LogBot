@@ -1,17 +1,11 @@
-import { Message } from 'discord.js';
+import * as commands from '.';
 
-import * as commands from './';
-
-interface Command {
-  name: string,
-  description: string,
-  execute(args: Array<string>, message: Message): void
-}
+import type { Command } from '../interfaces/command';
 
 const commandsMap = new Map<string, Command>();
 
-for(const [key, value] of Object.entries(commands)) {
-  commandsMap.set(key, value);
-}
+Object.entries(commands).forEach((entry) => {
+  commandsMap.set(entry[0], entry[1]);
+});
 
 export default commandsMap;
