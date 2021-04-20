@@ -1,8 +1,9 @@
 
 import * as dotenv from "dotenv";
 import * as Discord from "discord.js"
+import onMessage from "./events/onMessage";
 
-dotenv.config({ path: __dirname+'/.env' });
+dotenv.config({ path: __dirname + '/.env' });
 
 const TOKEN = process.env['TOKEN'];
 
@@ -14,6 +15,4 @@ BOT.on('ready', () => {
   console.log(`Logged as ${BOT.user?.tag}`)
 });
 
-BOT.on('message', (message) => {
-  console.log(message.content);
-});
+BOT.on('message', onMessage);
