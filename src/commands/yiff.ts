@@ -3,8 +3,20 @@ import axiosRequest from '../utils/axiosRequest';
 
 import type { Post } from '../interfaces/post';
 
-function selectPost(posts: Array<Post>): Post {
-  return posts[Math.floor(Math.random() * (posts.length - 1))];
+function selectPost(posts: Array<Post>): Post | undefined {
+  for (let index = 0; index < 4; index += 1) {
+    const post = posts[Math.floor(Math.random() * (posts.length - 1))];
+
+    const {
+      file: { ext },
+    } = post;
+
+    if (ext === 'png' || ext === 'jpg' || ext === 'gif') {
+      return post;
+    }
+  }
+
+  return undefined;
 }
 
 function sendEmbed(message: Message, post: Post) {
@@ -70,9 +82,14 @@ async function yiff(args: Array<string>, message : Message): Promise<void> {
   });
 
   switch (response.status) {
-    case 200:
-      sendEmbed(message, selectPost(response.data.posts));
+    case 200: {
+      const selected = selectPost(response.data.posts);
+
+      if (selected) sendEmbed(message, selected);
+      else message.channel.send('Desculpa, tentei meu melhor mas não posso enviar nada...');
+
       break;
+    }
     default:
       message.channel.send('Whops! Não consegui acessar o e621');
       break;
