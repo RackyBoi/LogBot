@@ -15,3 +15,5 @@ BOT.on('ready', () => {
 });
 
 BOT.on('message', onMessage);
+
+export default BOT;
