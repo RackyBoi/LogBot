@@ -1,4 +1,4 @@
-import { Message } from 'discord.js';
+import type { Message } from 'discord.js';
 
 function pong(args: Array<string>, message : Message): void {
   const sendDate = message.createdTimestamp;

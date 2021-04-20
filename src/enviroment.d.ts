@@ -3,6 +3,7 @@ declare global {
     interface ProcessEnv {
       TOKEN: string;
       PREFIX: '.';
+      YOUTUBEKEY: string,
     }
   }
 }
