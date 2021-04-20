@@ -6,7 +6,6 @@ import onMessage from "./events/onMessage";
 dotenv.config({ path: __dirname + '/.env' });
 
 const TOKEN = process.env['TOKEN'];
-
 const BOT = new Discord.Client();
 
 BOT.login(TOKEN);

@@ -10,7 +10,15 @@ function invokeCommand(
   args: Array<string>,
   message: Message
 ) {
-  console.info(`${message.author.username} invoked command: ${command} ${args}`);
+
+  const {
+    author: {
+      username
+    },
+    guild,
+  } = message
+
+  console.info(`${username} invoked command: ${command} ${args} at ${guild}`);
 
   const func = commands.get(command);
 
